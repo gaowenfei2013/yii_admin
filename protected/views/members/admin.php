@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Members'=>array('index'),
-	'Manage',
+	'会员'=>array('index'),
+	'管理',
 );
 
 $this->menu=array(
-    array('label'=>'Manage Members','url'=>'javascript:;','active'=>true,'icon'=>'cog'),
-	array('label'=>'List Members','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'Create Members','url'=>array('create'),'icon'=>'plus'),
+    array('label'=>'管理 会员','url'=>'javascript:;','active'=>true,'icon'=>'cog','linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出 会员','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增 会员','url'=>array('create'),'icon'=>'plus'),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -24,14 +24,13 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Members</h1>
+<h1>管理 会员</h1>
 
 <p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+   还可以输入比较运算符（??<，<=，>，>=，<>或=）开始您的搜索
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link('高级搜索','#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -42,7 +41,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'members-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'columns'=>array(
+    //'ajaxUpdate'=> false,//这样就不会AJAX翻页，批量修改的时候，必须去掉ajax翻页
+'columns'=>array(
 		'uid',
 		'username',
 		'password',
@@ -61,4 +61,49 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),
 	),
-)); ?>
+));
+
+/**
+//常用自定义显示
+array(
+    'columns' => array(
+        //锚点
+        array('name' => 'name', 'type' => 'raw', 'value' => 'CHtml::link($data->name,"/book/$data->id")'),
+        //图片
+        array('name' => 'image', 'type' => 'image', 'value' => 'LImages::getPath("book").$data->image'),
+        //下拉列表+回调函数. findOrderUrl 是action中的方法
+        array(
+            'name'=>'order_url',
+            'value'=>array($this,'findOrderUrl'),
+            'filter'=>CHtml::listData(OrderUrl::model()->findAll(),'order_url','title'),
+        ),
+        //时间
+        array('name' => 'create_time', 'type' => 'datetime'),
+        // 根据相关信息读数据库
+        array('name' => 'user_id', 'value' => 'User::model()->findbyPk($data->user_id)->username', 'filter' => false),
+    )
+);
+//自定义按钮
+array
+(
+    'class'=>'CButtonColumn',
+    'template'=>'{email}{down}{delete}',
+    'buttons'=>array
+    (
+        'email' => array
+        (
+            'label'=>'Send an e-mail to this user',
+            'imageUrl'=>Yii::app()->request->baseUrl.'/images/email.png',
+            'url'=>'Yii::app()->createUrl("users/email", array("id"=>$data->id))',
+        ),
+        'down' => array
+        (
+            'label'=>'[-]',
+            'url'=>'"#"',
+            'visible'=>'$data->score > 0',
+            'click'=>'function(){alert("Going down!");}',
+        ),
+    ),
+),
+*/
+?>

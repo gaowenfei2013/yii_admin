@@ -20,7 +20,11 @@ $('#{$class}_model').bind('keyup change', function(){
 <p>This generator generates a controller and views that implement CRUD operations for the specified data model.</p>
 
 <?php $form=$this->beginWidget('CCodeForm', array('model'=>$model)); ?>
-
+    <div class="row">
+        <label for="tab_name" >table name（中文）</label>
+        <input size="65" name="CrudCode[tab_name]" value="<?=@$_POST['CrudCode']['tab_name']?>" id="CrudCode_tab_name" type="text">
+        <br/>
+    </div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'model'); ?>
 		<?php echo $form->textField($model,'model',array('size'=>65)); ?>

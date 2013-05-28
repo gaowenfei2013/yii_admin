@@ -1,5 +1,7 @@
 <?php
-
+/**
+* 会员 控制器
+*/
 class MembersController extends Controller
 {
 	/**
@@ -50,6 +52,7 @@ class MembersController extends Controller
 	 */
 	public function actionView($id)
 	{
+        $this->pageTitle = '查看_会员_'.Yii::app()->name;
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -61,6 +64,7 @@ class MembersController extends Controller
 	 */
 	public function actionCreate()
 	{
+        $this->pageTitle = '新增_会员_'.Yii::app()->name;
 		$model=new Members;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -85,6 +89,7 @@ class MembersController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+        $this->pageTitle = '更新_会员_'.Yii::app()->name;
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -106,9 +111,11 @@ class MembersController extends Controller
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
+     * @throws CHttpException
 	 */
 	public function actionDelete($id)
 	{
+        $this->pageTitle = '删除_会员_'.Yii::app()->name;
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
@@ -138,6 +145,7 @@ class MembersController extends Controller
 	 */
 	public function actionAdmin()
 	{
+        $this->pageTitle = '管理_会员_'.Yii::app()->name;
 		$model=new Members('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Members']))

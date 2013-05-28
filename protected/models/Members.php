@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{members}}".
+ * "{{members}}"  模型
  *
- * The followings are the available columns in table '{{members}}':
+ * 以下是'{{members}}'中的字段
  * @property integer $uid
  * @property string $username
  * @property string $password
@@ -20,6 +20,7 @@
 class Members extends CActiveRecord
 {
 	/**
+     * 返回 AR 模型
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return Members the static model class
@@ -30,6 +31,7 @@ class Members extends CActiveRecord
 	}
 
 	/**
+     * 返回 数据表的名字
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -38,6 +40,7 @@ class Members extends CActiveRecord
 	}
 
 	/**
+     * 验证规则
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -61,6 +64,7 @@ class Members extends CActiveRecord
 	}
 
 	/**
+     * 关系模型
 	 * @return array relational rules.
 	 */
 	public function relations()
@@ -72,27 +76,29 @@ class Members extends CActiveRecord
 	}
 
 	/**
+     * 字段对应的说明
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()
 	{
 		return array(
-			'uid' => Yii::t('app', 'Uid'),
-			'username' => Yii::t('app', 'Username'),
-			'password' => Yii::t('app', 'Password'),
-			'email' => Yii::t('app', 'Email'),
-			'myid' => Yii::t('app', 'Myid'),
-			'myidkey' => Yii::t('app', 'Myidkey'),
-			'regip' => Yii::t('app', 'Regip'),
-			'regdate' => Yii::t('app', 'Regdate'),
-			'lastloginip' => Yii::t('app', 'Lastloginip'),
-			'lastlogintime' => Yii::t('app', 'Lastlogintime'),
-			'salt' => Yii::t('app', 'Salt'),
-			'secques' => Yii::t('app', 'Secques'),
+			'uid' => Yii::t('tb_members', 'Uid'),
+			'username' => Yii::t('tb_members', '用户名'),
+			'password' => Yii::t('tb_members', '密码'),
+			'email' => Yii::t('tb_members', '邮箱'),
+			'myid' => Yii::t('tb_members', 'Myid'),
+			'myidkey' => Yii::t('tb_members', 'Myidkey'),
+			'regip' => Yii::t('tb_members', '注册ip'),
+			'regdate' => Yii::t('tb_members', '注册时间'),
+			'lastloginip' => Yii::t('tb_members', '上次登录ip'),
+			'lastlogintime' => Yii::t('tb_members', '上次登录时间'),
+			'salt' => Yii::t('tb_members', 'Salt'),
+			'secques' => Yii::t('tb_members', 'Secques'),
 		);
 	}
 
 	/**
+     * 搜索
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
@@ -118,6 +124,13 @@ class Members extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                             'pageSize'=>20, //分页
+                         ),
+            'sort'=>array(
+                //'defaultOrder'=>' DESC', //设置默认排序
+            ),
+
 		));
 	}
 }
