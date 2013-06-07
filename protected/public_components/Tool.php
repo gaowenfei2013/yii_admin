@@ -54,5 +54,14 @@ class Tool {
         return self::pwdSalt($pwd,$salt)==$pwdSalt;
     }
 
+    /**
+     * 获取公共配置文件的值
+     * @param $key
+     * @return mixed
+     */
+    static function main($key){
+        return Yii::app()->params['main'][$key]['value'];
+    }
+
 
 }

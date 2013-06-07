@@ -11,7 +11,7 @@
                     <div id="sidebar" class="well well-small">
                         <?php
                         $this->beginWidget('zii.widgets.CPortlet', array(
-                            'title' => '操作',
+                            'title' => '操作 '.$this->controllerName,
                         ));
                         $this->widget('bootstrap.widgets.TbMenu', array(
                             'items' => $this->menu,

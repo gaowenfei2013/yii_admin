@@ -43,6 +43,7 @@ return array(
             'generatorPaths'=>array( //gii添加生成模块
                 'bootstrap.modelZh',
                 'bootstrap.gii',
+                'bootstrap.bootstrapForm',
             ),
 		),
         'srbac' => array(
@@ -140,8 +141,8 @@ return array(
 		),
         
 		'errorHandler'=>array(
-			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
+			// use 'site/showMsg' action to display errors
+			'errorAction'=>'site/showMsg',
 		),
 
 		'log'=>array(
@@ -167,7 +168,7 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+        //公共配置文件
+		'main'=> include $frontend.'/public_config/main.php',
 	),
 );

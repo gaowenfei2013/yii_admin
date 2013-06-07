@@ -17,13 +17,13 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-    array('label'=>'列出 <?php echo $modelClass; ?>','url'=>'javascript:;','icon'=>'th-list','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'新增 <?php echo $modelClass; ?>','url'=>array('create'),'icon'=>'plus'),
-	array('label'=>'管理 <?php echo $modelClass; ?>','url'=>array('admin'),'icon'=>'cog'),
+    array('label'=>'列出','url'=>'javascript:;','icon'=>'th-list','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
+	array('label'=>'管理','url'=>array('admin'),'icon'=>'cog'),
 );
 ?>
 
-<h1><?php echo $label; ?></h1>
+<h1>列出 <?php echo $label; ?></h1>
 
 <?php echo "<?php"; ?> $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

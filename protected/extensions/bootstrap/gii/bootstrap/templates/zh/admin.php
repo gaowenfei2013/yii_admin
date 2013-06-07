@@ -18,9 +18,9 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-    array('label'=>'管理 <?php echo $modelClass; ?>','url'=>'javascript:;','active'=>true,'icon'=>'cog','linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 <?php echo $modelClass; ?>','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'新增 <?php echo $modelClass; ?>','url'=>array('create'),'icon'=>'plus'),
+    array('label'=>'管理','url'=>'javascript:;','active'=>true,'icon'=>'cog','linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
 );
 
 Yii::app()->clientScript->registerScript('search', "

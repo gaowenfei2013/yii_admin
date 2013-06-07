@@ -19,12 +19,12 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-    array('label'=>'查看 <?php echo $modelClass; ?>','url'=>'javascript:;','icon'=>'eye-open','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 <?php echo $modelClass; ?>','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'新增 <?php echo $modelClass; ?>','url'=>array('create'),'icon'=>'plus'),
-	array('label'=>'更新 <?php echo $modelClass; ?>','url'=>array('update','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'icon'=>'pencil'),
-	array('label'=>'删除 <?php echo $modelClass; ?>','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>'真的要删除这条数据?'),'icon'=>'trash'),
-	array('label'=>'管理 <?php echo $modelClass; ?>','url'=>array('admin'),'icon'=>'cog'),
+    array('label'=>'查看','url'=>'javascript:;','icon'=>'eye-open','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
+	array('label'=>'更新','url'=>array('update','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'icon'=>'pencil'),
+	array('label'=>'删除','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>'真的要删除这条数据?'),'icon'=>'trash'),
+	array('label'=>'管理','url'=>array('admin'),'icon'=>'cog'),
 );
 ?>
 

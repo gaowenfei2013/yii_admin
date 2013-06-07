@@ -11,7 +11,7 @@ $modelClass = !empty($_POST['CrudCode']['tab_name']) ? $_POST['CrudCode']['tab_n
 ?>
 <?php echo "<?php\n"; ?>
 /**
-* <? echo $modelClass ? $modelClass:$this->modelClass;?> 控制器
+* <?php echo $modelClass ? $modelClass:$this->modelClass;?> 控制器
 */
 class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseControllerClass."\n"; ?>
 {
@@ -20,6 +20,7 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $controllerName = '<?php echo $modelClass ? $modelClass:$this->modelClass; ?>';
 
 	/**
 	 * @return array action filters

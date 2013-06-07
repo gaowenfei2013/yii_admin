@@ -25,6 +25,11 @@ class BackendUser extends CActiveRecord
      * @var 重复输入密码
      */
     public $confirmPwd;
+
+    /**
+     * @var 旧的密码
+     */
+    public $oldPwd;
 	/**
      * 返回 AR 模型
 	 * Returns the static model of the specified AR class.
@@ -149,6 +154,10 @@ class BackendUser extends CActiveRecord
 		));
 	}
 
+    /**
+     * 保存数据前，设置默认的时间、ip、密码等
+     * @return bool
+     */
     public function beforeSave(){
 
         if($this->isNewRecord){
@@ -156,10 +165,11 @@ class BackendUser extends CActiveRecord
             $this->salt = Tool::salt();
             $this->password = Tool::pwdSalt($this->password, $this->salt);
         }else{
-
             if(!empty($this->password) && $this->password == $this->confirmPwd){
                 $this->salt = Tool::salt();
                 $this->password = Tool::pwdSalt($this->password, $this->salt);
+            }else{
+                $this->password = $this->oldPwd;
             }
             $this->updated = time();
             $this->login_time = time();
@@ -168,13 +178,11 @@ class BackendUser extends CActiveRecord
         return parent::beforeSave(); //必须执行父类方法
     }
 
+    /**
+     * 保存旧的密码到中间变量
+     */
     public function afterFind(){
-        $this->login_ip = Tool::number2ip($this->login_ip);
-        $this->last_login_ip = Tool::number2ip($this->last_login_ip);
-        $this->created = date('Y-m-d H:i:s',$this->created);
-        $this->updated = date('Y-m-d H:i:s',$this->updated);
-        $this->last_login_time = date('Y-m-d H:i:s',$this->last_login_time);
-        $this->login_time = date('Y-m-d H:i:s',$this->login_time);
+        $this->oldPwd = $this->password;
     }
 
 }

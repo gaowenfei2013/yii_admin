@@ -112,7 +112,7 @@ $(function(){
     $('.J_lmenu a').live('click', function(){
         $('#J_mtab_h li').removeClass('current');
         var data_name=$(this).html(),
-            data_uri = $(this).attr('data-uri'),
+            data_uri = $(this).attr('href'),
             data_id = $(this).attr('data-id'),
             _li = $('#J_mtab li[data-id='+data_id+']');
         if(_li[0]){
@@ -139,6 +139,7 @@ $(function(){
         $(this).parent().addClass("on fb blue").siblings().removeClass("on fb blue");
         $(this).parent().parent().siblings().find('.sub_menu').removeClass("on fb blue");
         $('#rframe_'+ data_id).attr('src', $('#rframe_'+ data_id).attr('src'));
+        return false;
     });
 
     //TAB点击
@@ -177,11 +178,25 @@ $(function(){
         $('#J_mtab_h .current').next().trigger('click');
     });
 
+
+    //双击关闭TAB
+    $('#J_mtab_h li').live('dblclick', function(){
+        var _li = $(this);
+        closeTab(_li);
+        return false;
+    });
+
     //关闭TAB
     $('#J_mtab_h a.del').live('click', function(){
-        var _li = $(this).parent().parent(),
-            _prev_li = _li.prev('li'),
-            data_id = _li.attr('data-id');
+        var _li = $(this).parent().parent();
+        closeTab(_li);
+        return false;
+    });
+
+    function closeTab(_li){
+        var    _prev_li = _li.prev('li');
+        var    data_id = _li.attr('data-id');
+        if(data_id == 0) return false; //第一个后台首页不关闭
         _li.hide(60,function() {
             $(this).remove();
             $('#rframe_'+ data_id).remove();
@@ -191,8 +206,9 @@ $(function(){
                 $('#rframe_'+_prev_li.attr('data-id')).show();
             }
         });
-        return false;
-    });
+    }
+
+
 });
 //保持当前TAB可见
 (function($){

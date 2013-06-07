@@ -22,13 +22,13 @@
 </div>
 <div id="content">
     <div class="left_menu fl">
-        <div id="J_lmenu" class="J_lmenu" data-uri="www.baidu.com">
+        <div id="J_lmenu" class="J_lmenu" >
             <h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>商品管理</h3>
             <ul>
                 <li class="sub_menu">
-                    <a href="javascript:;" data-uri="<?php echo Yii::app()->createUrl('backendUser/admin') ?>" data-id="52" hidefocus="true">用户管理</a></li>
+                    <a href="<?php echo Yii::app()->createUrl('backendUser/admin') ?>"  data-id="52" hidefocus="true">用户管理</a></li>
                 <li class="sub_menu">
-                    <a href="javascript:;" data-uri="&a=add&menuid=249" data-id="249" hidefocus="true">添加商品</a>
+                    <a href="<?php echo Yii::app()->createUrl('setting/main') ?>" data-id="249" hidefocus="true">系统配置</a>
                 </li>
                 <li class="sub_menu">
                     <a href="javascript:;" data-uri="" data-id="250" hidefocus="true">一键删除</a>

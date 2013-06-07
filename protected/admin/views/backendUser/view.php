@@ -5,12 +5,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>'查看 后台用户','url'=>'javascript:;','icon'=>'eye-open','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 后台用户','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'新增 后台用户','url'=>array('create'),'icon'=>'plus'),
-	array('label'=>'更新 后台用户','url'=>array('update','id'=>$model->id),'icon'=>'pencil'),
-	array('label'=>'删除 后台用户','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'真的要删除这条数据?'),'icon'=>'trash'),
-	array('label'=>'管理 后台用户','url'=>array('admin'),'icon'=>'cog'),
+    array('label'=>'查看','url'=>'javascript:;','icon'=>'eye-open','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
+	array('label'=>'更新','url'=>array('update','id'=>$model->id),'icon'=>'pencil'),
+	array('label'=>'删除','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'真的要删除这条数据?'),'icon'=>'trash'),
+	array('label'=>'管理','url'=>array('admin'),'icon'=>'cog'),
 );
 ?>
 

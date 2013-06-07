@@ -9,6 +9,7 @@ class BackendUserController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $controllerName = '后台用户';
 
 	/**
 	 * @return array action filters
@@ -65,7 +66,7 @@ class BackendUserController extends Controller
 	public function actionCreate()
 	{
         $this->pageTitle = '新增_后台用户_'.Yii::app()->name;
-		$model=new BackendUser('create');
+		$model=new BackendUser("create");
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -98,7 +99,6 @@ class BackendUserController extends Controller
 		if(isset($_POST['BackendUser']))
 		{
 			$model->attributes=$_POST['BackendUser'];
-
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

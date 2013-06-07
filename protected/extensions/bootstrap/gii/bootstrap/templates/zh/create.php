@@ -18,9 +18,9 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-    array('label'=>'新增 <?php echo $modelClass; ?>','url'=>'javascript:;','icon'=>'plus','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 <?php echo $modelClass; ?>','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'管理 <?php echo $modelClass; ?>','url'=>array('admin'),'icon'=>'cog'),
+    array('label'=>'新增','url'=>'javascript:;','icon'=>'plus','active'=>true,'linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'管理','url'=>array('admin'),'icon'=>'cog'),
 );
 ?>
 

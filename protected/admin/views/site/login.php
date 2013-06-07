@@ -1,9 +1,4 @@
-<?php
-/**
- * 隐藏菜单元素
- */
-$this->no_visible_elements = true;
-?>
+
 <div class="row-fluid">
     <div class="dialog">
         <div class="block">

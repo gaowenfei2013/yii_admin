@@ -20,11 +20,11 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-    array('label'=>'更新 <?php echo $modelClass; ?>','url'=>'javascript:;','active'=>true,'icon'=>'pencil','linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 <?php echo $modelClass; ?>','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'新增 <?php echo $modelClass; ?>','url'=>array('create'),'icon'=>'plus'),
-	array('label'=>'查看 <?php echo $modelClass; ?>','url'=>array('view','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'icon'=>'eye-open'),
-	array('label'=>'管理 <?php echo $modelClass; ?>','url'=>array('admin'),'icon'=>'cog','icon'=>'cog'),
+    array('label'=>'更新','url'=>'javascript:;','active'=>true,'icon'=>'pencil','linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
+	array('label'=>'查看','url'=>array('view','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'icon'=>'eye-open'),
+	array('label'=>'管理','url'=>array('admin'),'icon'=>'cog','icon'=>'cog'),
 );
 ?>
 

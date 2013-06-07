@@ -5,9 +5,9 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>'管理 后台用户','url'=>'javascript:;','active'=>true,'icon'=>'cog','linkOptions'=>array('style'=>'cursor:default')),
-	array('label'=>'列出 后台用户','url'=>array('index'),'icon'=>'th-list'),
-	array('label'=>'新增 后台用户','url'=>array('create'),'icon'=>'plus'),
+    array('label'=>'管理','url'=>'javascript:;','active'=>true,'icon'=>'cog','linkOptions'=>array('style'=>'cursor:default')),
+	array('label'=>'列出','url'=>array('index'),'icon'=>'th-list'),
+	array('label'=>'新增','url'=>array('create'),'icon'=>'plus'),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -47,9 +47,16 @@ $('.search-form form').submit(function(){
 		'username',
 		'email',
 		'true_name',
-        'created',
+        array('name'=>'created','value'=>'date(Tool::main("dateTime"),$data->created)' ),
+		/*
+		'created',
+		'updated',
+		'last_login_time',
 		'last_login_ip',
 		'login_times',
+		'login_time',
+		'login_ip',
+		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

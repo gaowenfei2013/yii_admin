@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="container" id="page">
+<div class="container" id="page" style="margin-top:20px;">
 
     <?php echo $content; ?>
 
