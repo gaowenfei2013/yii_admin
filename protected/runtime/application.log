@@ -1637,3 +1637,11 @@ Stack trace:
 REQUEST_URI=/yii_admin/index.php?r=members/create
 HTTP_REFERER=http://localhost/yii_admin/index.php?r=members/create
 ---
+2013/05/31 09:09:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "admin"。' in D:\wamp\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin')
+#1 D:\wamp\www\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 D:\wamp\www\yii_admin\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/yii_admin/index.php?r=admin
+---
