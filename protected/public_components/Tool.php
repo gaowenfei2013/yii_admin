@@ -63,5 +63,43 @@ class Tool {
         return Yii::app()->params['main'][$key]['value'];
     }
 
+    /**
+     * utf-8 字符串截取
+     * @param $string
+     * @param $length
+     * @param string $etc 多余的字符串显示 ...
+     * @return string
+     */
+    static function truncate($string, $length, $etc = '...'){
+        $result = '';
+        $string = html_entity_decode(trim(strip_tags($string)), ENT_QUOTES, 'UTF-8');
+        $str_len = strlen($string);
+        for ($i = 0; (($i < $str_len) && ($length > 0)); $i++)
+        {
+            if ($number = strpos(str_pad(decbin(ord(substr($string, $i, 1))), 8, '0', STR_PAD_LEFT), '0'))
+            {
+                if ($length < 1.0)
+                {
+                    break;
+                }
+                $result .= substr($string, $i, $number);
+                $length -= 1.0;
+                $i += $number - 1;
+            }
+            else
+            {
+                $result .= substr($string, $i, 1);
+                $length -= 0.5;
+            }
+        }
+        $result = htmlspecialchars($result, ENT_QUOTES, 'UTF-8');
+        if ($i < $str_len)
+        {
+            $result .= $etc;
+        }
+        return $result;
+    }
+
+
 
 }

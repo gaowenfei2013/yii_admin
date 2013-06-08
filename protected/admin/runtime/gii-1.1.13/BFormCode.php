@@ -1,5 +1,5 @@
 <?php
 return array (
   'template' => 'default',
-  'baseControllerClass' => 'Controller',
+  'viewPath' => 'admin.views',
 );

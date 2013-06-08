@@ -1,4 +1,4 @@
-<h1>Form Generator</h1>
+<h1>bootstrap Form Generator(中文修改版)</h1>
 
 <p>This generator generates a view script file that displays a form to collect input for the specified model class.</p>
 

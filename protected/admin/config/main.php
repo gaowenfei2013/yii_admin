@@ -41,9 +41,7 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
             'generatorPaths'=>array( //gii添加生成模块
-                'bootstrap.modelZh',
                 'bootstrap.gii',
-                'bootstrap.bootstrapForm',
             ),
 		),
         'srbac' => array(

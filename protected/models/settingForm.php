@@ -1,6 +1,6 @@
 <?php
 /**
- * 公共配置文件模型
+ * 公共配置文件模型,只是做数据验证
  * Class LoginForm
  */
 class SettingForm extends CFormModel
@@ -8,6 +8,7 @@ class SettingForm extends CFormModel
 	public $key;
 	public $name;
 	public $value;
+    public $readOnly;
 
 	/**
 	 * Declares the validation rules.
@@ -18,7 +19,8 @@ class SettingForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('key,name,value', 'required'),
+			array('key,name,value,readOnly', 'required'),
+            array('readOnly','in','range'=>array(0,1)),
 		);
 	}
 
@@ -31,6 +33,7 @@ class SettingForm extends CFormModel
 			'key'=>'key标识',
 			'name'=>'名称',
 			'value'=>'值',
+			'readOnly'=>'是否只读',
 		);
 	}
 
