@@ -9,13 +9,20 @@ class SettingController extends Controller {
     public $controllerName = '公共配置';
 
     /**
+     * @var 配置文件数组
+     */
+    private  $main;
+
+    public function init(){
+        $this->main = Yii::app()->params['main'];
+    }
+    /**
      * 显示，修改配置
      */
     public function actionMain(){
-        $main = Yii::app()->params['main'];
         //重组数据
         $buildData = array();
-        foreach($main as $k => $v){
+        foreach($this->main as $k => $v){
             $buildData[] = array(
                 'id'=>$k,
                 'value'=>$v['value'],
@@ -46,34 +53,50 @@ class SettingController extends Controller {
      */
     public function actionCreate(){
         $model=new SettingForm;
-        $main = Yii::app()->params['main'];
-        if(isset($_POST['SettingForm']))
-        {
-            $model->attributes=$_POST['SettingForm'];
-            if($model->validate())
-            {
-                $addData = array(
-                    $model->key=>array(
-                        'name'=>$model->name,
-                        'value'=>$model->value,
-                        'readOnly'=>$model->readOnly,
-                    ),
-                );
-                $data = array_merge($main, $addData);
-                $this->_write($data);
-            }
-        }
+        $this->_updateOrCreate($model);
         $this->render('create', array('model'=>$model));
     }
 
-    public function actionUpdate(){
-        if(isset($_POST['main'])){
+    /**
+     * 修改配置
+     * @param $id
+     */
+    public function actionUpdate($id){
+        $model=new SettingForm;
+        $model->key = $id;
+        $model->name = $this->main[$id]['name'];
+        $model->value = $this->main[$id]['value'];
+        $model->readOnly = $this->main[$id]['readOnly'];
 
-        }
+        $this->_updateOrCreate($model);
+
+        $this->render('update',array(
+            'model'=>$model,
+        ));
     }
 
-    public function actionDelete(){
+    /**
+     * 删除配置
+     * @param $id
+     */
+    public function actionDelete($id){
+        unset($this->main[$id]);
+        $this->_write($this->main);
+    }
 
+    /**
+     * 查看配置
+     * @param $id
+     */
+    public function actionView($id){
+        $model=new SettingForm;
+        $model->key = $id;
+        $model->name = $this->main[$id]['name'];
+        $model->value = $this->main[$id]['value'];
+        $model->readOnly = $this->main[$id]['readOnly'];
+        $this->render('view',array(
+            'model'=>$model,
+        ));
     }
 
     /**
@@ -88,6 +111,29 @@ class SettingController extends Controller {
             $this->showMsg('修改配置成功！');
         }else{
             $this->showMsg('修改配置失败！','','操作失败');
+        }
+    }
+
+    /**
+     * 修改或者新增配置
+     * @param $model
+     */
+    private function _updateOrCreate($model){
+        if(isset($_POST['SettingForm']))
+        {
+            $model->attributes=$_POST['SettingForm'];
+            if($model->validate())
+            {
+                $addData = array(
+                    $model->key=>array(
+                        'name'=>$model->name,
+                        'value'=>$model->value,
+                        'readOnly'=>$model->readOnly,
+                    ),
+                );
+                $data = array_merge($this->main, $addData);
+                $this->_write($data);
+            }
         }
     }
 

@@ -35,7 +35,7 @@ class SiteController extends Controller
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions'=>array('admin','delete'),
-                'users'=>array('admin'),
+                'users'=>array('*'),
             ),
             array('deny',  // deny all users
                 'users'=>array('*'),
@@ -93,19 +93,20 @@ class SiteController extends Controller
 	public function actionLogin()
 	{
         $this->layout='//layouts/column1';
-		$model=new LoginForm;
+		$model=new BackendLoginForm;
 
+        @print_r($_POST['ajax']);
 		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='backend-login-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 
 		// collect user input data
-		if(isset($_POST['LoginForm']))
+		if(isset($_POST['BackendLoginForm']))
 		{
-			$model->attributes=$_POST['LoginForm'];
+			$model->attributes=$_POST['BackendLoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);

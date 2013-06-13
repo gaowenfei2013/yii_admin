@@ -1,18 +1,36 @@
+<?php
+/* @var $this BackendLoginFormController */
+/* @var $model BackendLoginForm */
+/* @var $form CActiveForm */
+Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin/login.css');
 
-<div class="row-fluid">
-    <div class="dialog">
-        <div class="block">
-            <p class="block-heading"><?php echo Yii::t('site','登录'); ?></p>
-            <div class="block-body">
-                <form>
-                    <label>Username</label>
-                    <input type="text" class="span12">
-                    <label>Password</label>
-                    <input type="password" class="span12">
-                    <a href="index.html" class="btn btn-primary pull-right">Sign In</a>
-                    <div class="clearfix"></div>
-                </form>
-            </div>
+?>
+
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+	'id'=>'backend-login-form',
+	'enableAjaxValidation'=>false,
+	'enableClientValidation'=>false,
+
+)); ?>
+
+<div id="login">
+    <h2>网站登录</h2>
+
+    <div class="wrap">
+        <?php echo $form->textFieldRow($model,'username',array('class'=>'span3')); ?>
+        <?php echo $form->passwordFieldRow($model,'password',array('class'=>'span3')); ?>
+        <div class="verifyCode">
+            <?php $this->widget('CCaptcha'); ?>
         </div>
+        <?php echo $form->passwordFieldRow($model,'verifyCode'); ?>
+    </div>
+
+    <div class="login_button">
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'type'=>'primary',
+			'label'=>'登录',
+		)); ?>
     </div>
 </div>
+<?php $this->endWidget(); ?>

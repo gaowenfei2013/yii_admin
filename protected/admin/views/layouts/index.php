@@ -12,6 +12,7 @@
         <div class="cut_line admin_info tr">
             <a href="<?php echo Yii::app()->baseUrl ?>/index.php" target="_blank">网站首页</a>
             <span class="cut">|</span><span class="mr10"><?php echo Yii::app()->user->name ?></span>
+            <a href="<?php echo Yii::app()->createUrl('backendUser/update',array('id'=>Yii::app()->user->id)) ?>" target="rframe_0">修改密码</a>
             <a href="<?php echo Yii::app()->createUrl('site/logout') ?>">[注销]</a>
         </div>
     </div>
@@ -30,30 +31,11 @@
                 <li class="sub_menu">
                     <a href="<?php echo Yii::app()->createUrl('setting/main') ?>" data-id="249" hidefocus="true">系统配置</a>
                 </li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="250" hidefocus="true">一键删除</a>
-                </li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="203" hidefocus="true">商品审核</a></li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="56" hidefocus="true">商品分类</a>
-                </li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="199" hidefocus="true">商品来源</a></li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="186" hidefocus="true">商品评论</a>
-                </li>
-                <li class="sub_menu">
-                    <a href="javascript:;" data-uri="" data-id="288" hidefocus="true">图片本地化</a></li>
+
             </ul>
             <h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>商品采集</h3>
             <ul>
                 <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="192" hidefocus="true">阿里妈妈</a></li>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="290" hidefocus="true">淘宝网址</a></li>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="268" hidefocus="true">拍拍网址</a></li>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="287" hidefocus="true">天猫折扣精选</a></li>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="289" hidefocus="true">精品推荐</a></li>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="281" hidefocus="true">淘宝评论</a></li>
             </ul>
         </div>
         <h1>这里通过data-uri地址，获取ajax获取左侧菜单。在/js/admin.js 21、104行</h1>
@@ -82,7 +64,7 @@
             </div>
         </div>
         <div id="J_rframe" class="rframe_b">
-            <iframe id="rframe_0" src="<?php echo Yii::app()->createUrl('site/main') ?>" frameborder="0"
+            <iframe id="rframe_0" name="rframe_0" src="<?php echo Yii::app()->createUrl('site/main') ?>" frameborder="0"
                     scrolling="auto" style="height:100%;width:100%;"></iframe>
         </div>
     </div>

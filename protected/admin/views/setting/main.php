@@ -19,7 +19,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
             'header'=>'操作',
             'buttons'=>array(
                 'myUpdate' => array(
-                    'label'=>'更新',
+                    'label'=>'修改',
                     'icon'=>'icon-pencil',
                     'url' =>'Yii::app()->createUrl("setting/update",array("id"=>$data["id"]))',
                     'visible'=>'$data["readOnly"]==0 ? true : false',
@@ -34,6 +34,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                     'icon'=>'icon-trash',
                     'url' =>'Yii::app()->createUrl("setting/delete",array("id"=>$data["id"]))',
                     'visible'=>'$data["readOnly"]==0 ? true : false',
+                    'options'=>array('onclick'=>'return confirm("真的要删除这条数据？")'),
                 ),
             ),
         ),

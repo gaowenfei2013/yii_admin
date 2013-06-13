@@ -1,47 +1,31 @@
 <?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
+/* @var $this BackendLoginFormController */
+/* @var $model BackendLoginForm */
+/* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
+$this->menu=array(
+    array('label'=>'新增','url'=>'javascript:;','active'=>true,'icon'=>'plus','linkOptions'=>array('style'=>'cursor:default')),
+    array('label'=>'管理','url'=>array('admin'),'icon'=>'th-list'),
 );
 ?>
 
-<h1>Login</h1>
-
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-	'id'=>'login-form',
-    'type'=>'horizontal',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+	'id'=>'backend-login-form-form',
+	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="help-block"> <span class="required">*</span>是必填项</p>
 
-	<?php echo $form->textFieldRow($model,'username'); ?>
+<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->passwordFieldRow($model,'password',array(
-        'hint'=>'Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>',
-    )); ?>
-
-	<?php echo $form->checkBoxRow($model,'rememberMe'); ?>
-
-	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton', array(
-            'buttonType'=>'submit',
-            'type'=>'primary',
-            'label'=>'Login',
-        )); ?>
-	</div>
+<?php echo $form->textFieldRow($model,'username',array('class'=>'span5')); ?>
+<?php echo $form->textFieldRow($model,'password',array('class'=>'span5')); ?>
+    <div class="form-actions">
+        <?php $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'type'=>'primary',
+			'label'=>'提交',
+		)); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
