@@ -95,17 +95,45 @@ $(function(){
         return false;
     });
 
+    //顶部菜单,取消点击焦点状态
+    $(".J_tmenu a").attr({'hidefocus':'true',"style":"outline:none;"});
+    //默认第一个选中
+    $(".J_tmenu li").first().addClass('on');
+
     //顶部菜单点击
-    $('#J_tmenu a').live('click', function(){
-        var data_id = $(this).attr('data-id');
+    $('.J_tmenu a').live('click', function(){
+        var data_id = $(this).parent().attr('data-id');
         //改变样式
         $(this).parent().addClass("on").siblings().removeClass("on");
         //改变左侧
-        $('#J_lmenu').load($('#J_lmenu').attr('data-uri'), {menuid:data_id});
+        $('#J_lmenu').load($('#J_lmenu').attr('data-uri'), {"id":data_id});
         //显示左侧菜单，当点击顶部时，展开左侧
         $('#J_lmenu').parent().removeClass('left_menu_on');
         $('html').removeClass('on');
         $('#J_lmoc').removeClass('close').data('clicknum', 0);
+    });
+
+    /**
+     * 顶部 修改密码，新建iframe
+     */
+    $("#changePwd").click(function(){
+        var rframe = $('<iframe/>', {
+            src               : $(this).attr("href"),
+            id                  : 'rframe_' + 'pwd',
+            allowtransparency : true,
+            frameborder       : 0,
+            scrolling          : 'auto',
+            width              : '100%',
+            height        : '100%'
+        }).appendTo('#J_rframe');
+        $(rframe[0].contentWindow.document).ready(function(){
+            rframe.siblings().hide();
+            var _li = $('<li data-id="rframe_pwd"><span><a>'+'修改密码'+
+                '</a><a class="del" title="关闭此页">关闭</a></span></li>').addClass('current');
+            _li.appendTo('#J_mtab_h').siblings().removeClass('current');
+            _li.trigger('click');
+        });
+        return false;
     });
 
     //左侧菜单点击
@@ -131,7 +159,8 @@ $(function(){
             }).appendTo('#J_rframe');
             $(rframe[0].contentWindow.document).ready(function(){
                 rframe.siblings().hide();
-                var _li = $('<li data-id="'+data_id+'"><span><a>'+data_name+'</a><a class="del" title="关闭此页">关闭</a></span></li>').addClass('current');
+                var _li = $('<li data-id="'+data_id+'"><span><a>'+data_name+
+                    '</a><a class="del" title="关闭此页">关闭</a></span></li>').addClass('current');
                 _li.appendTo('#J_mtab_h').siblings().removeClass('current');
                 _li.trigger('click');
             });

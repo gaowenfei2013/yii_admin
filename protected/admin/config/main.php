@@ -34,7 +34,9 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		
+        'members'=>array(
+            'class'=>'admin.modules.MembersModule',
+        ),
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'admin',
@@ -45,7 +47,7 @@ return array(
             ),
 		),
         'srbac' => array(
-            'class'=>'backend.modules.srbac.SrbacModule',
+            'class'=>'admin.modules.srbac.SrbacModule',
             'userclass'=>'BackendUser', //default: User
             'userid'=>'id', //default: userid
             'username'=>'username', //default:username
@@ -55,7 +57,7 @@ return array(
             'superUser' =>'Authority', //default: Authorizer
             'css'=>'srbac.css',  //default: srbac.css
             'layout'=>
-            'backend.views.layouts.main', //default: application.views.layouts.main,                                              //must be an existing alias
+            'admin.views.layouts.main', //default: application.views.layouts.main,                                              //must be an existing alias
             'notAuthorizedView'=> 'srbac.views.authitem.unauthorized', // default:
             //srbac.views.authitem.unauthorized, must be an existing alias
             'alwaysAllowed'=>array(   //default: array()
@@ -97,7 +99,7 @@ return array(
 
         'authManager'=>array(
             // 类SDbAuthManager在srbac模块中的路径（别名），注意大小写
-            'class'=>'backend.modules.srbac.components.SDbAuthManager',
+            'class'=>'admin.modules.srbac.components.SDbAuthManager',
             // 使用的数据库的组件名
             'connectionID'=>'db',
             // 下面是3个数据表

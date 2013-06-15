@@ -26,16 +26,12 @@ class SiteController extends Controller
     {
         return array(
             array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('login','logout','captcha','main'),
+                'actions'=>array('login','logout','captcha','main','showMsg'),
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('index','view','create','update','contact','page','clearCache'),
-                'users'=>array('*'),
-            ),
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin','delete'),
-                'users'=>array('*'),
+                'actions'=>array('index'),
+                'users'=>array('@'),
             ),
             array('deny',  // deny all users
                 'users'=>array('*'),
@@ -70,13 +66,16 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->renderPartial('//layouts/index');
+        $topMenu = Menu::model()->findAllByAttributes(array('parent_id'=>0),array('order'=>'sort DESC'));
+		$this->renderPartial('//layouts/index',array(
+            'topMenu'=>$topMenu,
+        ));
 	}
 
 	/**
 	 * This is the action to handle external exceptions.
 	 */
-	public function actionError()
+	public function actionShowMsg()
 	{
 		if($error=Yii::app()->errorHandler->error)
 		{
@@ -128,6 +127,7 @@ class SiteController extends Controller
      * 后台首页
      */
     public function actionMain(){
+        var_dump(Yii::app()->user->checkAccess('srbac@AuthitemManage'));
         $this->layout = '//layouts/column1';
         $this->render('main');
     }

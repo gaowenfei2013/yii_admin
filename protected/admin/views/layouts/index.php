@@ -1,3 +1,6 @@
+<?php
+/*@var $topMenu 顶部菜单*/
+?>
 <!doctype html>
 <html class="off">
 <head>
@@ -12,34 +15,36 @@
         <div class="cut_line admin_info tr">
             <a href="<?php echo Yii::app()->baseUrl ?>/index.php" target="_blank">网站首页</a>
             <span class="cut">|</span><span class="mr10"><?php echo Yii::app()->user->name ?></span>
-            <a href="<?php echo Yii::app()->createUrl('backendUser/update',array('id'=>Yii::app()->user->id)) ?>" target="rframe_0">修改密码</a>
+            <a href="<?php echo Yii::app()->createUrl('backendUser/update',array('id'=>Yii::app()->user->id)) ?>"
+               id="changePwd">修改密码</a>
             <a href="<?php echo Yii::app()->createUrl('site/logout') ?>">[注销]</a>
         </div>
     </div>
-    <ul class="nav white" id="J_tmenu">
-        <li class="top_menu"><a href="javascript:;" data-id="50" hidefocus="true" style="outline:none;">商品</a></li>
-        <li class="top_menu"><a href="javascript:;" data-id="70" hidefocus="true" style="outline:none;">用户</a></li>
-    </ul>
+    <?php
+    //顶部菜单
+    $menuData = array();
+    foreach($topMenu as $v){
+        $menuData[] = array(
+            'label'=>$v->name,
+            'url'=>'javascript:;',
+            'itemOptions'=>array('class'=>'top_menu','data-id'=>$v->id),
+            'activeCssClass'=>'on',
+        );
+    }
+    $this->widget('zii.widgets.CMenu',array(
+        'items'=>$menuData,
+        'htmlOptions'=>array('class'=>'nav white J_tmenu'),
+        'id'=>'test_id',
+    ));
+    ?>
 </div>
 <div id="content">
+    <!--左侧菜单-->
     <div class="left_menu fl">
-        <div id="J_lmenu" class="J_lmenu" >
-            <h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>商品管理</h3>
-            <ul>
-                <li class="sub_menu">
-                    <a href="<?php echo Yii::app()->createUrl('backendUser/admin') ?>"  data-id="52" hidefocus="true">用户管理</a></li>
-                <li class="sub_menu">
-                    <a href="<?php echo Yii::app()->createUrl('setting/main') ?>" data-id="249" hidefocus="true">系统配置</a>
-                </li>
-
-            </ul>
-            <h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>商品采集</h3>
-            <ul>
-                <li class="sub_menu"><a href="javascript:;" data-uri="" data-id="192" hidefocus="true">阿里妈妈</a></li>
-            </ul>
+        <div id="J_lmenu" class="J_lmenu" data-uri="<?php echo Yii::app()->createUrl('menu/show') ?>" >
         </div>
-        <h1>这里通过data-uri地址，获取ajax获取左侧菜单。在/js/admin.js 21、104行</h1>
-        <a href="javascript:;" id="J_lmoc" style="outline-style: none; outline-color: invert; outline-width: medium;"
+        <a href="javascript:;" id="J_lmoc"
+           style="outline-style: none; outline-color: invert; outline-width: medium;"
            hidefocus="true" class="open" title="展开或关闭"></a>
     </div>
     <div class="right_main">

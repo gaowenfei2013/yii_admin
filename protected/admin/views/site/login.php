@@ -8,8 +8,8 @@ Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin/login.
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'backend-login-form',
-	'enableAjaxValidation'=>false,
-	'enableClientValidation'=>false,
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
 
 )); ?>
 

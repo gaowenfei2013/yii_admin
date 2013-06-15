@@ -4,7 +4,7 @@
  * Class SettingController
  */
 
-class SettingController extends Controller {
+class SettingController extends SBaseController {
 
     public $controllerName = '公共配置';
 

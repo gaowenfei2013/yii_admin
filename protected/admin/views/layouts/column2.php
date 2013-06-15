@@ -10,8 +10,9 @@
                 <div class="span3">
                     <div id="sidebar" class="well well-small">
                         <?php
+                        $controllerName = isset($this->controllerName) ? $this->controllerName : null;
                         $this->beginWidget('zii.widgets.CPortlet', array(
-                            'title' => '操作 '.$this->controllerName,
+                            'title' => '操作 '.$controllerName,
                         ));
                         $this->widget('bootstrap.widgets.TbMenu', array(
                             'items' => $this->menu,
