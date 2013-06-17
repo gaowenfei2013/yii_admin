@@ -15,7 +15,7 @@
         <div class="cut_line admin_info tr">
             <a href="<?php echo Yii::app()->baseUrl ?>/index.php" target="_blank">网站首页</a>
             <span class="cut">|</span><span class="mr10"><?php echo Yii::app()->user->name ?></span>
-            <a href="<?php echo Yii::app()->createUrl('backendUser/update',array('id'=>Yii::app()->user->id)) ?>"
+            <a href="<?php echo Yii::app()->createUrl('backendUser/updateSelfPwd') ?>"
                id="changePwd">修改密码</a>
             <a href="<?php echo Yii::app()->createUrl('site/logout') ?>">[注销]</a>
         </div>

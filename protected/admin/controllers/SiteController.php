@@ -127,7 +127,7 @@ class SiteController extends Controller
      * 后台首页
      */
     public function actionMain(){
-        var_dump(Yii::app()->user->checkAccess('srbac@AuthitemManage'));
+        //var_dump(Yii::app()->user->checkAccess('srbac@AuthitemManage'));
         $this->layout = '//layouts/column1';
         $this->render('main');
     }

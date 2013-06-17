@@ -196,53 +196,59 @@ class MenuController extends SBaseController
         $menuHtml = '';
         foreach($menuData as $v){
             if($v['hasChildren']){
-                $menuLi = ''; //li 子菜单
                 $menuHtml .= '<h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>'.$v['name'].'</h3>';
                 //继续查找子类
                 $ChildrenMenu = $menu->getChildren($v['id']);
                 if($ChildrenMenu){
-                    foreach($ChildrenMenu as $v_c){
-                        $pattern = '(((f|ht){1}tp://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)';
-                        $isUrl = preg_match($pattern,$v_c['link']);
-                        if(!$isUrl){
-                            $del = Helper::findModule('srbac')->delimeter;
-                            $tmpAccess = explode('/',$v_c['link']);
-                            $access = '';
-                            foreach($tmpAccess as $v_a){
-                                $access .= ucfirst($v_a);
-                            }
-                            if(count($tmpAccess)==3){
-                                $access = $tmpAccess[0].$del.ucfirst($tmpAccess[1]).ucfirst($tmpAccess[2]);
-                            }
-                            $allowedAccess = Helper::findModule('srbac')->getAlwaysAllowed(); //总是允许的
-                            if(!Yii::app()->user->checkAccess($access) && !in_array($access,$allowedAccess) ) break;
-                        }
-
-
-                        //如果url是绝对地址，则用绝对地址
-                        $url = $isUrl ? $v_c['link'] : Yii::app()->createUrl($v_c['link']);
-                        $menuLi .= '
-                        <li class="sub_menu">
-                           <a href="'.$url.'"  data-id="'.$v_c['id'].'" hidefocus="true">'.$v_c['name'].'</a>
-                        </li>';
-                    }
-                    $menuHtml .= '<ul>'.$menuLi.'</ul>';
+                    $menuHtml .= $this->getLiMenu($ChildrenMenu);
                 }
-
             }else{
-                $menuLi = ''; //li 子菜单
-                //如果url是绝对地址，则用绝对地址
-                $pattern = '(((f|ht){1}tp://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)';
-                $url = preg_match($pattern,$v['link']) ? $v['link'] : Yii::app()->createUrl($v['link']);
-                $menuLi .= '
-                        <li class="sub_menu">
-                           <a href="'.$url.'"  data-id="'.$v['id'].'" hidefocus="true">'.$v['name'].'</a>
-                        </li>';
-                $menuHtml .= '<ul>'.$menuLi.'</ul>';
+                $menuHtml .= '<ul>'.$this->getLi($v).'</ul>';
             }
 
         }
+
         echo $menuHtml;
+    }
+
+    /**
+     * 获取li菜单
+     * @param array $ChildrenMenu 子类菜单
+     * @return string
+     */
+    private function getLiMenu(Array $ChildrenMenu){
+        $menuLi = '';
+        foreach($ChildrenMenu as $v_c){
+            $menuLi .= $this->getLi($v_c);
+        }
+        return  '<ul>'.$menuLi.'</ul>';
+    }
+
+    private function getLi($v_c){
+        $menuLi = '';
+        $pattern = '(((f|ht){1}tp://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)';
+        $isUrl = preg_match($pattern,$v_c['link']);
+        if(!$isUrl){
+            $del = Helper::findModule('srbac')->delimeter;
+            $tmpAccess = explode('/',$v_c['link']);
+            $access = '';
+            foreach($tmpAccess as $v_a){
+                $access .= ucfirst($v_a);
+            }
+            if(count($tmpAccess)==3){
+                $access = $tmpAccess[0].$del.ucfirst($tmpAccess[1]).ucfirst($tmpAccess[2]);
+            }
+            $allowedAccess = Helper::findModule('srbac')->getAlwaysAllowed(); //总是允许的
+            if(!Yii::app()->user->checkAccess($access) && !in_array($access,$allowedAccess) ) return false;
+        }
+
+        //如果url是绝对地址，则用绝对地址
+        $url = $isUrl ? $v_c['link'] : Yii::app()->createUrl($v_c['link']);
+        $menuLi .= '
+                    <li class="sub_menu">
+                       <a href="'.$url.'"  data-id="'.$v_c['id'].'" hidefocus="true">'.$v_c['name'].'</a>
+                    </li>';
+        return  $menuLi;
     }
 
 }

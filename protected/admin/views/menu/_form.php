@@ -7,7 +7,8 @@
 
 	<?php echo $form->errorSummary($model);
         $listData = CHtml::listData(Menu::model()->findAll(),'id','name');
-        array_unshift($listData,'顶部菜单');
+        $listData[0] = '顶部菜单';
+        ksort($listData);
     ?>
 
 	<?php echo $form->dropDownListRow($model,'parent_id', $listData);  ?>

@@ -73,6 +73,33 @@ class BackendUserController extends SBaseController
 		));
 	}
 
+    /**
+     * 修改自己的密码
+     */
+    public function actionUpdateSelfPwd()
+    {
+        $this->pageTitle = '更新_后台用户_'.Yii::app()->name;
+        $model=$this->loadModel(Yii::app()->user->id);
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if(isset($_POST['BackendUser']))
+        {
+            $model->attributes=$_POST['BackendUser'];
+            if($model->save()){
+                $this->showMsg('修改密码成功');
+            }else{
+                $this->showMsg('修改密码失败');
+            }
+
+        }
+
+        $this->render('update',array(
+            'model'=>$model,
+        ));
+    }
+
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
