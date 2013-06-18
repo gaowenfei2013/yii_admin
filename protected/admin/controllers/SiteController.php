@@ -131,4 +131,106 @@ class SiteController extends Controller
         $this->layout = '//layouts/column1';
         $this->render('main');
     }
+
+    /**
+     *获取 当前类的所有子类
+     */
+    public static function actionAjaxFillTree(){
+        if (!Yii::app()->request->isAjaxRequest) {
+            exit();
+        }
+        $parentId = 0;
+        if (isset($_GET['root'])) {
+            $parentId = (int) $_GET['root'];
+        }
+        $menu = new Menu();
+        $children = $menu->getChildren($parentId);
+        //节点处增加链接
+        $tree_data=array();
+        foreach ($children as $child)
+        {
+            $options=array(
+                'href'=>Yii::app()->createUrl('menu/update', array('id'=>$child['id'])),
+                'id'=>$child['id'],
+                'class'=>'treenode',
+            );
+            $child['text'] = CHtml::openTag('a', $options).$child['text'].CHtml::closeTag('a');
+            $tree_data[]=$child;
+        }
+        //转换成json, 替换hasChildren
+        echo str_replace( '"hasChildren":"0"', '"hasChildren":false', CTreeView::saveDataAsJson($tree_data));
+        exit();
+    }
+
+    /**
+     * ajax 显示后台菜单
+     */
+    public function showMenu($id){
+        $menu = new Menu();
+        $menuData = $menu->getChildren($id);
+        $menuHtml = '';
+        foreach($menuData as $v){
+            if($v['hasChildren']){
+                //继续查找子类
+                $ChildrenMenu = $menu->getChildren($v['id']);
+                if($ChildrenMenu){
+                    $menuLi  = $this->getLiMenu($ChildrenMenu); //检查权限，获取菜单
+                    if(stripos($menuLi,'<li')!==false){ //是否有子菜单
+                        $menuHtml .= '<h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>'.$v['name'].'</h3>';
+                        $menuHtml .= $menuLi;
+                    }
+                }
+            }else{
+                $menuHtml .= '<ul>'.$this->getLi($v).'</ul>';
+            }
+
+        }
+        return $menuHtml;
+    }
+
+    /**
+     * 获取li菜单
+     * @param array $ChildrenMenu 子类菜单
+     * @return string
+     */
+    private function getLiMenu(Array $ChildrenMenu){
+        $menuLi = '';
+        foreach($ChildrenMenu as $v_c){
+            $menuLi .= $this->getLi($v_c);
+        }
+        return  '<ul>'.$menuLi.'</ul>';
+    }
+
+    /**
+     * 检查用户是否有 菜单的url权限
+     * @param $v_c
+     * @return bool|string
+     */
+    private function getLi($v_c){
+        $menuLi = '';
+        $pattern = '(((f|ht){1}tp://)[-a-zA-Z0-9@:%_\+.~#?&//=]+)';
+        $isUrl = preg_match($pattern,$v_c['link']);
+        if(!$isUrl){
+            Yii::import("srbac.components.Helper");
+            $del = Helper::findModule('srbac')->delimeter;
+            $tmpAccess = explode('/',$v_c['link']);
+            $access = '';
+            foreach($tmpAccess as $v_a){
+                $access .= ucfirst($v_a);
+            }
+            if(count($tmpAccess)==3){
+                $access = $tmpAccess[0].$del.ucfirst($tmpAccess[1]).ucfirst($tmpAccess[2]);
+            }
+            $allowedAccess = Helper::findModule('srbac')->getAlwaysAllowed(); //总是允许的
+            if(!Yii::app()->user->checkAccess($access) && !in_array($access,$allowedAccess) ) return false;
+        }
+
+        //如果url是绝对地址，则用绝对地址
+        $url = $isUrl ? $v_c['link'] : Yii::app()->createUrl($v_c['link']);
+        $menuLi .= '
+                    <li class="sub_menu">
+                       <a href="'.$url.'"  data-id="'.$v_c['id'].'" hidefocus="true">'.$v_c['name'].'</a>
+                    </li>';
+        return  $menuLi;
+    }
 }

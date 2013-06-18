@@ -18,7 +18,7 @@ $(function(){
     set_h();
     
     //默认载入左侧菜单
-    $('#J_lmenu').load($('#J_lmenu').attr('data-uri'));
+    $('#J_lmenu').html( $('#menu_'+$('.J_tmenu .top_menu').attr('data-id')).html() );
 
     $(".J_switchs").live('click', function(i){
         var ul = $(this).parent().next();
@@ -106,7 +106,8 @@ $(function(){
         //改变样式
         $(this).parent().addClass("on").siblings().removeClass("on");
         //改变左侧
-        $('#J_lmenu').load($('#J_lmenu').attr('data-uri'), {"id":data_id});
+        //$('#J_lmenu').load($('#J_lmenu').attr('data-uri'), {"id":data_id});
+        $('#J_lmenu').html( $('#menu_'+data_id).html() );
         //显示左侧菜单，当点击顶部时，展开左侧
         $('#J_lmenu').parent().removeClass('left_menu_on');
         $('html').removeClass('on');

@@ -21,27 +21,38 @@
         </div>
     </div>
     <?php
+
     //顶部菜单
     $menuData = array();
     foreach($topMenu as $v){
-        $menuData[] = array(
-            'label'=>$v->name,
-            'url'=>'javascript:;',
-            'itemOptions'=>array('class'=>'top_menu','data-id'=>$v->id),
-            'activeCssClass'=>'on',
-        );
+        $childHtml = ''; //左侧子菜单
+        $menuLi = $this->showMenu($v->id);
+        $isMenu = stripos($menuLi,'<li')!==false; //是否有li标签
+        if($isMenu){
+            $childHtml .= "<span id='menu_{$v->id}'style='display:none' >";
+            $childHtml .= $menuLi;
+            $childHtml .= '</span>';
+            $menuData[] = array(
+                'label'=>$v->name,
+                'url'=>'javascript:;',
+                'itemOptions'=>array('class'=>'top_menu','data-id'=>$v->id),
+                'activeCssClass'=>'on',
+            );
+        }
+        echo $childHtml;
     }
+
     $this->widget('zii.widgets.CMenu',array(
         'items'=>$menuData,
         'htmlOptions'=>array('class'=>'nav white J_tmenu'),
-        'id'=>'test_id',
     ));
+
     ?>
 </div>
 <div id="content">
     <!--左侧菜单-->
     <div class="left_menu fl">
-        <div id="J_lmenu" class="J_lmenu" data-uri="<?php echo Yii::app()->createUrl('menu/show') ?>" >
+        <div id="J_lmenu" class="J_lmenu" >
         </div>
         <a href="javascript:;" id="J_lmoc"
            style="outline-style: none; outline-color: invert; outline-width: medium;"
