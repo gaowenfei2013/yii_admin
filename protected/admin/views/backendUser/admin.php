@@ -47,6 +47,8 @@ $('.search-form form').submit(function(){
 		'username',
 		'email',
 		'true_name',
+        'login_times',
+        array('name'=>'login_time','value'=>'date(Tool::main("dateTime"),$data->login_time)' ),
         array('name'=>'created','value'=>'date(Tool::main("dateTime"),$data->created)' ),
 		/*
 		'created',

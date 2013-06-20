@@ -30,7 +30,7 @@ class SiteController extends Controller
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('index'),
+                'actions'=>array('index','map'),
                 'users'=>array('@'),
             ),
             array('deny',  // deny all users
@@ -94,7 +94,6 @@ class SiteController extends Controller
         $this->layout='//layouts/column1';
 		$model=new BackendLoginForm;
 
-        @print_r($_POST['ajax']);
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='backend-login-form')
 		{
@@ -107,8 +106,19 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['BackendLoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate() && $model->login()){
+                //更新登录
+                $backendUser = BackendUser::model()->findByPk(Yii::app()->user->id);
+                $backendUser->login_times = $backendUser->login_times +1;
+                $backendUser->login_ip = Tool::ip2number($_SERVER['REMOTE_ADDR']);
+                $backendUser->login_time = time();
+                $backendUser->scenario = 'login';
+                if(!$backendUser->save()){
+                    $this->showMsg('更新登录信息失败','','操作失败');
+                }
+               $this->redirect(Yii::app()->user->returnUrl);
+            }
+
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -132,35 +142,7 @@ class SiteController extends Controller
         $this->render('main');
     }
 
-    /**
-     *获取 当前类的所有子类
-     */
-    public static function actionAjaxFillTree(){
-        if (!Yii::app()->request->isAjaxRequest) {
-            exit();
-        }
-        $parentId = 0;
-        if (isset($_GET['root'])) {
-            $parentId = (int) $_GET['root'];
-        }
-        $menu = new Menu();
-        $children = $menu->getChildren($parentId);
-        //节点处增加链接
-        $tree_data=array();
-        foreach ($children as $child)
-        {
-            $options=array(
-                'href'=>Yii::app()->createUrl('menu/update', array('id'=>$child['id'])),
-                'id'=>$child['id'],
-                'class'=>'treenode',
-            );
-            $child['text'] = CHtml::openTag('a', $options).$child['text'].CHtml::closeTag('a');
-            $tree_data[]=$child;
-        }
-        //转换成json, 替换hasChildren
-        echo str_replace( '"hasChildren":"0"', '"hasChildren":false', CTreeView::saveDataAsJson($tree_data));
-        exit();
-    }
+
 
     /**
      * ajax 显示后台菜单
@@ -176,8 +158,9 @@ class SiteController extends Controller
                 if($ChildrenMenu){
                     $menuLi  = $this->getLiMenu($ChildrenMenu); //检查权限，获取菜单
                     if(stripos($menuLi,'<li')!==false){ //是否有子菜单
-                        $menuHtml .= '<h3 class="f14"><span class="J_switchs cu on" title="展开或关闭"></span>'.$v['name'].'</h3>';
-                        $menuHtml .= $menuLi;
+                        $menuHtml .= '<span><h3 class="f14">
+                        <span class="J_switchs cu on" title="展开或关闭"></span>'.$v['name'].'</h3>';
+                        $menuHtml .= $menuLi.'</span>';
                     }
                 }
             }else{
@@ -232,5 +215,15 @@ class SiteController extends Controller
                        <a href="'.$url.'"  data-id="'.$v_c['id'].'" hidefocus="true">'.$v_c['name'].'</a>
                     </li>';
         return  $menuLi;
+    }
+
+    /**
+     * 后台地图
+     */
+    public function actionMap(){
+        $topMenu = Menu::model()->findAllByAttributes(array('parent_id'=>0),array('order'=>'sort DESC'));
+        $this->renderPartial('map',array(
+            'topMenu'=>$topMenu,
+        ));
     }
 }

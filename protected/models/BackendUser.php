@@ -12,8 +12,6 @@
  * @property string $true_name
  * @property integer $created
  * @property integer $updated
- * @property integer $last_login_time
- * @property integer $last_login_ip
  * @property integer $login_times
  * @property integer $login_time
  * @property integer $login_ip
@@ -63,7 +61,7 @@ class BackendUser extends CActiveRecord
 			array('username, email, true_name', 'required'),
             array('password','required','on'=>'create'),
             array('confirmPwd','required','on'=>'create'),
-			array('created, updated, last_login_time, last_login_ip, login_times, login_time, login_ip', 'numerical', 'integerOnly'=>true),
+			array('created, updated, login_times, login_time, login_ip', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>32),
 			array('password', 'length', 'min'=>6),
@@ -76,7 +74,7 @@ class BackendUser extends CActiveRecord
 			array('true_name', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, salt, email, true_name, created, updated, last_login_time, last_login_ip, login_times, login_time, login_ip', 'safe', 'on'=>'search'),
+			array('id, username, password, salt, email, true_name, created, updated, login_times, login_time, login_ip', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -108,8 +106,6 @@ class BackendUser extends CActiveRecord
 			'true_name' => Yii::t('tb_backend_user', '真实姓名'),
 			'created' => Yii::t('tb_backend_user', '创建时间'),
 			'updated' => Yii::t('tb_backend_user', '更新时间'),
-			'last_login_time' => Yii::t('tb_backend_user', '上次登录时间'),
-			'last_login_ip' => Yii::t('tb_backend_user', '上次登录ip'),
 			'login_times' => Yii::t('tb_backend_user', '登录次数'),
 			'login_time' => Yii::t('tb_backend_user', '登录时间'),
 			'login_ip' => Yii::t('tb_backend_user', '本次登录ip'),
@@ -136,8 +132,6 @@ class BackendUser extends CActiveRecord
 		$criteria->compare('true_name',$this->true_name,true);
 		$criteria->compare('created',$this->created);
 		$criteria->compare('updated',$this->updated);
-		$criteria->compare('last_login_time',$this->last_login_time);
-		$criteria->compare('last_login_ip',$this->last_login_ip);
 		$criteria->compare('login_times',$this->login_times);
 		$criteria->compare('login_time',$this->login_time);
 		$criteria->compare('login_ip',$this->login_ip);
@@ -164,6 +158,7 @@ class BackendUser extends CActiveRecord
             $this->created = time();
             $this->salt = Tool::salt();
             $this->password = Tool::pwdSalt($this->password, $this->salt);
+            $this->login_ip = Tool::ip2number($_SERVER['REMOTE_ADDR']);
         }else{
             if(!empty($this->password) && $this->password == $this->confirmPwd){
                 $this->salt = Tool::salt();
@@ -172,8 +167,6 @@ class BackendUser extends CActiveRecord
                 $this->password = $this->oldPwd;
             }
             $this->updated = time();
-            $this->login_time = time();
-            $this->login_ip = Tool::ip2number($_SERVER['REMOTE_ADDR']);
         }
         return parent::beforeSave(); //必须执行父类方法
     }

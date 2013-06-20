@@ -149,7 +149,35 @@ class MenuController extends SBaseController
 			Yii::app()->end();
 		}
 	}
-
+    /**
+     *获取 当前类的所有子类
+     */
+    public static function actionAjaxFillTree(){
+        if (!Yii::app()->request->isAjaxRequest) {
+            exit();
+        }
+        $parentId = 0;
+        if (isset($_GET['root'])) {
+            $parentId = (int) $_GET['root'];
+        }
+        $menu = new Menu();
+        $children = $menu->getChildren($parentId);
+        //节点处增加链接
+        $tree_data=array();
+        foreach ($children as $child)
+        {
+            $options=array(
+                'href'=>Yii::app()->createUrl('menu/update', array('id'=>$child['id'])),
+                'id'=>$child['id'],
+                'class'=>'treenode',
+            );
+            $child['text'] = CHtml::openTag('a', $options).$child['text'].CHtml::closeTag('a');
+            $tree_data[]=$child;
+        }
+        //转换成json, 替换hasChildren
+        echo str_replace( '"hasChildren":"0"', '"hasChildren":false', CTreeView::saveDataAsJson($tree_data));
+        exit();
+    }
 
 
 }

@@ -74,7 +74,7 @@ $(function(){
         $.get(data_uri, function(html){
             dialog.content(html);
         });
-        $('#admin_map a').live('click', function(){
+        $('#J_lmenu dl dd a').live('click', function(){
             dialog.close();
         });
     });
@@ -129,7 +129,7 @@ $(function(){
         }).appendTo('#J_rframe');
         $(rframe[0].contentWindow.document).ready(function(){
             rframe.siblings().hide();
-            var _li = $('<li data-id="rframe_pwd"><span><a>'+'修改密码'+
+            var _li = $('<li data-id="rframe_pwd"><span><a>'+'修改个人资料'+
                 '</a><a class="del" title="关闭此页">关闭</a></span></li>').addClass('current');
             _li.appendTo('#J_mtab_h').siblings().removeClass('current');
             _li.trigger('click');
@@ -166,8 +166,8 @@ $(function(){
                 _li.trigger('click');
             });
         }
-        $(this).parent().addClass("on fb blue").siblings().removeClass("on fb blue");
-        $(this).parent().parent().siblings().find('.sub_menu').removeClass("on fb blue");
+        $('.sub_menu').removeClass("on fb blue");
+        $(this).parent().addClass("on fb blue");
         $('#rframe_'+ data_id).attr('src', $('#rframe_'+ data_id).attr('src'));
         return false;
     });

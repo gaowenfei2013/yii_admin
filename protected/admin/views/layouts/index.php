@@ -10,13 +10,13 @@
 </head>
 <body scroll="no">
 <div id="header">
-    <div class="logo"><a href="index.php" title="管理中心"></a></div>
+    <div class="logo"><a href="admin.php" title="管理中心"></a></div>
     <div class="fr">
         <div class="cut_line admin_info tr">
             <a href="<?php echo Yii::app()->baseUrl ?>/index.php" target="_blank">网站首页</a>
             <span class="cut">|</span><span class="mr10"><?php echo Yii::app()->user->name ?></span>
             <a href="<?php echo Yii::app()->createUrl('backendUser/updateSelfPwd') ?>"
-               id="changePwd">修改密码</a>
+               id="changePwd">修改个人资料</a>
             <a href="<?php echo Yii::app()->createUrl('site/logout') ?>">[注销]</a>
         </div>
     </div>
@@ -63,9 +63,10 @@
             <div class="options">
                 <a href="javascript:;" title="刷新页面" id="J_refresh" class="refresh" hidefocus="true">刷新页面</a>
                 <a href="javascript:;" title="全屏" id="J_full_screen" class="admin_full" hidefocus="true">全屏</a>
-                <a href="javascript:;" title="更新缓存" id="J_flush_cache" class="flush_cache" data-uri="" hidefocus="true">更新缓存</a>
-                <a href="javascript:;" title="后台地图" id="J_admin_map" class="admin_map" data-uri="test.html"
-                   hidefocus="true">后台地图</a>
+                <a href="javascript:;" title="更新缓存" id="J_flush_cache"
+                   class="flush_cache" data-uri="" hidefocus="true">更新缓存</a>
+                <a href="javascript:;" title="后台地图" id="J_admin_map"
+                   class="admin_map" data-uri="<?php echo Yii::app()->createUrl('site/map')?>" hidefocus="true">后台地图</a>
             </div>
             <div id="J_mtab" class="mtab"><a href="javascript:;" id="J_prev" class="mtab_pre fl" title="上一页">上一页</a><a
                     href="javascript:;" id="J_next" class="mtab_next fr" title="下一页">下一页</a>
