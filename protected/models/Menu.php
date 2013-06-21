@@ -123,6 +123,7 @@ class Menu extends CActiveRecord
                     a.name,
                     a.link,
                     a.sort,
+                    a.parent_id,
                     a.`name` AS text,
                     b.id IS NOT NULL AS hasChildren #转换成布尔值
                 FROM
@@ -138,4 +139,35 @@ class Menu extends CActiveRecord
         $req = Yii::app()->db->createCommand($sql);
         return $req->queryAll();
     }
+
+    /**
+     * 排序好的下拉菜单
+     * @param string $delimiter
+     * @return array
+     */
+    public function getSelectMenu($delimiter='|--'){
+        $topMenu = $this->getChildren(0);
+        if(empty($topMenu)) return array();
+        $children = array(); //子类
+        $selectMenu = array();
+        foreach($topMenu as $k => $v){
+            if($v['hasChildren']){
+                $children[$k] = $this->getChildren($v['id']);
+            }
+        }
+        /**
+         * 将子菜单放到父类菜单后面，逐个放入一个数组
+         */
+        foreach($children as $k=>$v){
+            if($topMenu[$k]['id']==$v[0]['parent_id']){
+                 array_splice($selectMenu,count($selectMenu),0,array_merge(array($topMenu[$k]),$v));
+            }
+        }
+        //给二级菜单添加分隔符
+        foreach($selectMenu as $k => &$v){
+            if($v['parent_id']!=0) $v['name'] = $delimiter.$v['name'];
+        }
+        return $selectMenu;
+    }
+
 }

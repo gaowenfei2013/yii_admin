@@ -6,12 +6,13 @@
 	<p class="help-block"> <span class="required">*</span>是必填项</p>
 
 	<?php echo $form->errorSummary($model);
-        $listData = CHtml::listData(Menu::model()->findAll(),'id','name');
-        $listData[0] = '顶部菜单';
-        ksort($listData);
+        $listData = CHtml::listData($model->getSelectMenu(),'id','name');
+        $t = array_reverse($listData,true);
+        $t[0] = '顶部菜单';
+        $listData = array_reverse($t,true);
     ?>
 
-	<?php echo $form->dropDownListRow($model,'parent_id', $listData);  ?>
+	<?php echo $form->dropDownListRow($model,'parent_id', $listData,array('size'=>12));  ?>
 
 	<?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>50)); ?>
 

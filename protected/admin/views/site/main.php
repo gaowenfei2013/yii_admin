@@ -7,7 +7,8 @@
         <div class="col-2">
             <h6>欢迎使用Yii-admin</h6>
             <div class="content">
-                本程序基于Yii 1.1.13 开发
+                本程序基于Yii 1.1.13 开发。
+                具备基本的后台功能：菜单系统、权限系统(rbac)。集成 uc_client，
             </div>
         </div>
 

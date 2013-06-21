@@ -22,7 +22,7 @@
 Yii::import("srbac.components.Helper");
 
 class SBaseController extends Controller {
-
+    public $layout='//layouts/column1';
   /**
    * Checks if srbac access is granted for the current user
    * @param String $action . The current action
