@@ -8,4 +8,6 @@ yii admin
 集成ucenter。
 用于网站后台快速开发。
 
-just a plan
+已经完成：
+1.菜单系统
+2.权限系统(rbac)
