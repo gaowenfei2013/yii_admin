@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6ff20df-3e35-440f-8dce-dd27853978a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/models/Menu.php" afterPath="$PROJECT_DIR$/protected/models/Menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/admin/modules/srbac/controllers/SBaseController.php" afterPath="$PROJECT_DIR$/protected/admin/modules/srbac/controllers/SBaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/admin/views/menu/_form.php" afterPath="$PROJECT_DIR$/protected/admin/views/menu/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin.php" afterPath="$PROJECT_DIR$/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/admin/runtime/application.log" afterPath="$PROJECT_DIR$/protected/admin/runtime/application.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/admin/modules/srbac/views/authitem/assignments.php" afterPath="$PROJECT_DIR$/protected/admin/modules/srbac/views/authitem/assignments.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/admin/views/site/main.php" afterPath="$PROJECT_DIR$/protected/admin/views/site/main.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="yii_admin.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371783971252" ignored="false" />
+    <file path="/Dummy.txt" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1372316953281" ignored="false" />
     <file path="/column2.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371283047671" ignored="false" />
     <file path="/admin.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371781629581" ignored="false" />
     <file path="/create.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1370755023640" ignored="false" />
     <file path="/index.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371708064000" ignored="false" />
     <file path="/update.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1370755097421" ignored="false" />
     <file path="/view.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371710586296" ignored="false" />
-    <file path="/a.dummy" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1371794114159" ignored="false" />
+    <file path="/a.dummy" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1372316961375" ignored="false" />
     <file path="/model.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1369635645625" ignored="false" />
     <file path="/ModelCode.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1369633899796" ignored="false" />
     <file path="/ModelGenerator.php" changelist="d6ff20df-3e35-440f-8dce-dd27853978a1" time="1369633878093" ignored="false" />
@@ -84,19 +77,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Menu.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protected/models/Menu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="33" selection-start="3921" selection-end="3921" vertical-scroll-proportion="-15.8125">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AuthitemController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/controllers/AuthitemController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="660" column="66" selection-start="22332" selection-end="22332" vertical-scroll-proportion="-5.7719297">
+            <state line="660" column="66" selection-start="22332" selection-end="22332" vertical-scroll-proportion="-0.71875">
               <folding />
             </state>
           </provider>
@@ -105,7 +89,7 @@
       <file leaf-file-name="userAssignments.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/views/authitem/userAssignments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="7" selection-start="621" selection-end="621" vertical-scroll-proportion="-12.9375">
+            <state line="23" column="7" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -114,7 +98,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/admin/views/layouts/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="61.75">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1371708065171" expanded="false" signature="1094:1106" placeholder="..." />
               </folding>
@@ -125,7 +109,7 @@
       <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/admin/views/site/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="398" selection-end="398" vertical-scroll-proportion="0.35603714">
+            <state line="22" column="16" selection-start="746" selection-end="746" vertical-scroll-proportion="0.28482974">
               <folding />
             </state>
           </provider>
@@ -134,7 +118,7 @@
       <file leaf-file-name="SBaseController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/controllers/SBaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="5" selection-start="634" selection-end="634" vertical-scroll-proportion="-7.90625">
+            <state line="25" column="5" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,7 +127,7 @@
       <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/admin/config/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="3194" selection-end="3194" vertical-scroll-proportion="-30.1875">
+            <state line="77" column="0" selection-start="3194" selection-end="3194" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -152,7 +136,7 @@
       <file leaf-file-name="admin.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="1" selection-start="247" selection-end="247" vertical-scroll-proportion="-7.90625">
+            <state line="11" column="1" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -322,6 +306,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -782,7 +767,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -798,7 +782,7 @@
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php-activerecord" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mwylady" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="179" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="851" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="858" />
@@ -878,7 +862,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1448" height="878" extended-state="6" />
+    <frame x="-4" y="-4" width="1448" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -886,7 +870,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47586206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20373027" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21664275" sideWeight="0.5241379" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.223099" sideWeight="0.5241379" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -964,65 +948,33 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/protected/admin/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="3194" selection-end="3194" vertical-scroll-proportion="-30.1875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="1" selection-start="247" selection-end="247" vertical-scroll-proportion="-7.90625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/components/allowed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="2" selection-start="68" selection-end="68" vertical-scroll-proportion="0.17801857">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/controllers/SBaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="634" selection-end="634" vertical-scroll-proportion="-7.90625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/controllers/AuthitemController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="660" column="66" selection-start="22332" selection-end="22332" vertical-scroll-proportion="-5.7719297">
+        <state line="660" column="66" selection-start="22332" selection-end="22332" vertical-scroll-proportion="-0.71875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/messages/cz/srbac.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="5" selection-start="6404" selection-end="6404" vertical-scroll-proportion="0.59800667">
-          <folding />
-        </state>
+        <state line="139" column="5" selection-start="6404" selection-end="6404" vertical-scroll-proportion="0.59800667" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/views/authitem/assignments.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="40" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.6296296">
-          <folding />
-        </state>
+        <state line="43" column="40" selection-start="1278" selection-end="1278" vertical-scroll-proportion="0.6296296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/modules/srbac/views/authitem/userAssignments.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="7" selection-start="621" selection-end="621" vertical-scroll-proportion="-12.9375">
+        <state line="23" column="7" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/views/layouts/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="61.75">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1371708065171" expanded="false" signature="1094:1106" placeholder="..." />
           </folding>
@@ -1031,17 +983,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/views/menu/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="-7.1875">
-          <folding>
-            <marker date="1371786745877" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1371786745877" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        <state line="13" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="-7.1875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/extensions/bootstrap/widgets/TbActiveForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="498" column="5" selection-start="16644" selection-end="16644" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/admin/controllers/MenuController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="33" selection-start="3921" selection-end="3921" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/admin/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="11" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.59800667">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/admin/views/site/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="398" selection-end="398" vertical-scroll-proportion="0.35603714">
+        <state line="22" column="16" selection-start="746" selection-end="746" vertical-scroll-proportion="0.28482974">
           <folding />
         </state>
       </provider>

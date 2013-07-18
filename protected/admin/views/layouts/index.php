@@ -101,7 +101,7 @@
     lang.all = "所有";
 </script>
 
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl ?>/assets/570c01b5/jquery.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl ?>/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl ?>/js/artDialog-5.0.3/jquery.artDialog.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl ?>/js/admin/admin.js"></script>
 
