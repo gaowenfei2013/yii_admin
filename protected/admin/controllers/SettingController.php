@@ -4,7 +4,7 @@
  * Class SettingController
  */
 
-class SettingController extends SBaseController {
+class SettingController extends Controller {
 
     public $controllerName = '公共配置';
 
@@ -107,7 +107,7 @@ class SettingController extends SBaseController {
         $content  = "<?php \r\n //网站公共配置\r\r return ";
         $content .= var_export($data,true);
         $content .= ';';
-        if(file_put_contents(Yii::app()->basePath.'/public_config/main.php', $content)){
+        if(file_put_contents(Yii::app()->basePath.'/public_config/params.php', $content)){
             $this->showMsg('修改配置成功！');
         }else{
             $this->showMsg('修改配置失败！','','操作失败');
@@ -135,6 +135,13 @@ class SettingController extends SBaseController {
                 $this->_write($data);
             }
         }
+    }
+
+    /**
+     * 图片上传
+     */
+    public function actionUpload(){
+         Tool::ckeditorUpload();
     }
 
 }

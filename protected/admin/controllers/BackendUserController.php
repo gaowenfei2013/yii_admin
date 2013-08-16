@@ -2,7 +2,7 @@
 /**
 * 后台用户 控制器
 */
-class BackendUserController extends SBaseController
+class BackendUserController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

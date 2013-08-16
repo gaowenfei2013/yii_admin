@@ -82,18 +82,18 @@ class Members extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'uid' => Yii::t('tb_members', 'Uid'),
-			'username' => Yii::t('tb_members', '用户名'),
-			'password' => Yii::t('tb_members', '密码'),
-			'email' => Yii::t('tb_members', '邮箱'),
-			'myid' => Yii::t('tb_members', 'Myid'),
-			'myidkey' => Yii::t('tb_members', 'Myidkey'),
-			'regip' => Yii::t('tb_members', '注册ip'),
-			'regdate' => Yii::t('tb_members', '注册时间'),
-			'lastloginip' => Yii::t('tb_members', '上次登录ip'),
-			'lastlogintime' => Yii::t('tb_members', '上次登录时间'),
-			'salt' => Yii::t('tb_members', 'Salt'),
-			'secques' => Yii::t('tb_members', 'Secques'),
+			'uid' => Yii::t('Members', 'Uid'),
+			'username' => Yii::t('Members', '用户名'),
+			'password' => Yii::t('Members', '密码'),
+			'email' => Yii::t('Members', '邮箱'),
+			'myid' => Yii::t('Members', 'Myid'),
+			'myidkey' => Yii::t('Members', 'Myidkey'),
+			'regip' => Yii::t('Members', '注册ip'),
+			'regdate' => Yii::t('Members', '注册时间'),
+			'lastloginip' => Yii::t('Members', '上次登录ip'),
+			'lastlogintime' => Yii::t('Members', '上次登录时间'),
+			'salt' => Yii::t('Members', 'Salt'),
+			'secques' => Yii::t('Members', 'Secques'),
 		);
 	}
 

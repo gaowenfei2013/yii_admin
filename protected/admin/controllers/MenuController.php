@@ -2,7 +2,7 @@
 /**
 * 后台菜单 控制器
 */
-class MenuController extends SBaseController
+class MenuController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

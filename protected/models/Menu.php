@@ -69,17 +69,17 @@ class Menu extends CActiveRecord
      * 字段对应的说明
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => Yii::t('tb_menu', 'ID'),
-			'parent_id' => Yii::t('tb_menu', '父类id'),
-			'name' => Yii::t('tb_menu', '名称'),
-			'link' => Yii::t('tb_menu', '链接'),
-			'alt' => Yii::t('tb_menu', '提示'),
-			'sort' => Yii::t('tb_menu', '排序'),
-		);
-	}
+    public function attributeLabels()
+    {
+        return array(
+            'id' => Yii::t('Menu','ID'),
+            'parent_id' => Yii::t('Menu','父类id'),
+            'name' => Yii::t('Menu','名称'),
+            'link' => Yii::t('Menu','链接'),
+            'alt' => Yii::t('Menu','提示'),
+            'sort' => Yii::t('Menu','排序'),
+        );
+    }
 
 	/**
      * 搜索
@@ -153,15 +153,17 @@ class Menu extends CActiveRecord
         foreach($topMenu as $k => $v){
             if($v['hasChildren']){
                 $children[$k] = $this->getChildren($v['id']);
+            }else{
+                $children[$k] = $v;
             }
         }
         /**
          * 将子菜单放到父类菜单后面，逐个放入一个数组
          */
         foreach($children as $k=>$v){
-            if($topMenu[$k]['id']==$v[0]['parent_id']){
+           // if($topMenu[$k]['id']==$v[0]['parent_id']){
                  array_splice($selectMenu,count($selectMenu),0,array_merge(array($topMenu[$k]),$v));
-            }
+           // }
         }
         //给二级菜单添加分隔符
         foreach($selectMenu as $k => &$v){

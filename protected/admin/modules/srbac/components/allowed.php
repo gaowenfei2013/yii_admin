@@ -1,6 +1,10 @@
 <?php 
  return array(
 	'BackendUserUpdateSelfPwd',
-	'MenuShow'
+	'SiteCaptcha',
+	'SiteShowMsg',
+	'SiteLogin',
+	'SiteLogout',
+	'SiteMap'
 );
 ?>

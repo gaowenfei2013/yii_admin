@@ -7,37 +7,6 @@ class SiteController extends Controller
 
     public $layout = '//layouts/column2';
 
-       /**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
-    public function accessRules()
-    {
-        return array(
-            array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array('login','logout','captcha','main','showMsg'),
-                'users'=>array('*'),
-            ),
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('index','map'),
-                'users'=>array('@'),
-            ),
-            array('deny',  // deny all users
-                'users'=>array('*'),
-            ),
-        );
-    }
         
 	/**
 	 * Declares class-based actions.
@@ -137,9 +106,9 @@ class SiteController extends Controller
      * 后台首页
      */
     public function actionMain(){
-        //var_dump(Yii::app()->user->checkAccess('srbac@AuthitemManage'));
         $this->layout = '//layouts/column1';
-        $this->render('main');
+        $mysql_version = Yii::app()->db->createCommand('select version() as v')->queryRow();
+        $this->render('main',array('mysql_version'=>$mysql_version['v']));
     }
 
 

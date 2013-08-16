@@ -2,7 +2,7 @@
 /**
 * 会员 控制器
 */
-class MembersController extends SBaseController
+class MembersController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

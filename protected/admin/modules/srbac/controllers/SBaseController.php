@@ -21,7 +21,7 @@
  */
 Yii::import("srbac.components.Helper");
 
-class SBaseController extends Controller {
+class SBaseController extends CController {
     public $layout='//layouts/column1';
   /**
    * Checks if srbac access is granted for the current user
@@ -61,12 +61,12 @@ class SBaseController extends Controller {
       return true;
     }
    
-    
+
     //Allow access if srbac is not installed yet
     if (!Yii::app()->getModule('srbac')->isInstalled()) {
       return true;
     }
-   
+
     //Allow access when srbac is in debug mode
     if (Yii::app()->getModule('srbac')->debug) {
       return true;

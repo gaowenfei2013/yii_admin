@@ -100,6 +100,31 @@ class Tool {
         return $result;
     }
 
+    /**
+     * js 弹窗返回
+     * @param $msg
+     */
+    static function alertBack($msg){
+        echo '<script>alert("'.$msg.'");history.back();</script>';
+    }
+
+    /**
+     * 文件上传
+     */
+    static function ckeditorUpload(){
+        if(isset($_GET['CKEditor'])){
+            $fileUpload = new FileUpload('upload',30000); //用firebug 可以看到上传控件的 name="upload"
+            $funcNum = $_GET['CKEditorFuncNum']; //回调函数的值
+            $url = $fileUpload->getLink(); //下面js传递url时，第一个字符\会自动过滤掉，不见了，所以要在这里提前加上一个 /
+            //js回调，参考官方文档
+            //http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_(Uploader)/Custom_File_Browser
+            echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url');</script>";
+            exit();
+        }else{
+            echo '<script>alert("警告：非法操作！上传文件失败")</script>';
+        }
+
+    }
 
 
 }

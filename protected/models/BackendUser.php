@@ -97,18 +97,18 @@ class BackendUser extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('tb_backend_user', 'ID'),
-			'username' => Yii::t('tb_backend_user', '用户名'),
-			'password' => Yii::t('tb_backend_user', '密码'),
-			'confirmPwd' => Yii::t('tb_backend_user', '重复密码'),
-			'salt' => Yii::t('tb_backend_user', '密码干扰串'),
-			'email' => Yii::t('tb_backend_user', '邮箱'),
-			'true_name' => Yii::t('tb_backend_user', '真实姓名'),
-			'created' => Yii::t('tb_backend_user', '创建时间'),
-			'updated' => Yii::t('tb_backend_user', '更新时间'),
-			'login_times' => Yii::t('tb_backend_user', '登录次数'),
-			'login_time' => Yii::t('tb_backend_user', '登录时间'),
-			'login_ip' => Yii::t('tb_backend_user', '本次登录ip'),
+			'id' => Yii::t('BackendUser', 'ID'),
+			'username' => Yii::t('BackendUser', '用户名'),
+			'password' => Yii::t('BackendUser', '密码'),
+			'confirmPwd' => Yii::t('BackendUser', '重复密码'),
+			'salt' => Yii::t('BackendUser', '密码干扰串'),
+			'email' => Yii::t('BackendUser', '邮箱'),
+			'true_name' => Yii::t('BackendUser', '真实姓名'),
+			'created' => Yii::t('BackendUser', '创建时间'),
+			'updated' => Yii::t('BackendUser', '更新时间'),
+			'login_times' => Yii::t('BackendUser', '登录次数'),
+			'login_time' => Yii::t('BackendUser', '登录时间'),
+			'login_ip' => Yii::t('BackendUser', '本次登录ip'),
 		);
 	}
 

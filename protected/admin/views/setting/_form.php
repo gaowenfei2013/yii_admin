@@ -11,9 +11,19 @@
 
 <?php echo $form->textFieldRow($model,'key',array('class'=>'span5')); ?>
 <?php echo $form->textFieldRow($model,'name',array('class'=>'span5')); ?>
-<?php echo $form->textAreaRow($model,'value',array('class'=>'span10')); ?>
+<?php //echo $form->textAreaRow($model,'value',array('class'=>'span10')); ?>
 <?php echo $form->dropDownListRow($model,'readOnly',array(0,1)); ?>
 
+    <?php
+     $this->widget('bootstrap.widgets.TbCKEditor',array(
+            'model'=>$model,
+            'attribute'=>'value',
+            'editorOptions'=>array(
+                'skin'=>'kama',
+                'filebrowserImageUploadUrl'=>Yii::app()->createUrl('setting/upload'),
+            ),
+     ));
+    ?>
     <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'submit',
