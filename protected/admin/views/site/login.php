@@ -22,7 +22,7 @@ Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin/login.
         <div class="verifyCode">
             <?php $this->widget('CCaptcha'); ?>
         </div>
-        <?php echo $form->passwordFieldRow($model,'verifyCode'); ?>
+        <?php echo $form->textFieldRow($model,'verifyCode'); ?>
     </div>
 
     <div class="login_button">
